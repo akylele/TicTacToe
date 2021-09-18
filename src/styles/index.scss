@@ -1,0 +1,145 @@
+//@mainBG: #938d84;
+//@mainColor: black;
+//@secondColor: white
+
+.field .cross, .field .zero, .field .empty {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border: 1px solid @mainColor;
+    box-sizing: border-box;
+}
+
+.field .cross span, .field .zero span {
+    position: absolute;
+    font-size: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.field {
+    width: 300px;
+    height: 300px;
+    border: 1px solid @mainColor;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px auto;
+}
+
+.history-field {
+    margin-top: 10px;
+    width: 99px;
+    height: 99px;
+    border: 1px solid @mainColor;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.history-field .cross, .history-field .zero, .history-field .empty {
+    width: 33px;
+    height: 33px;
+    position: relative;
+    border: 1px solid @mainColor;
+    box-sizing: border-box;
+}
+
+.history-field .cross span, .history-field .zero span {
+    position: absolute;
+    font-size: 25px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.red {
+    color: red;
+}
+
+.historyWrapper {
+    padding: 15px;
+}
+
+.historyWrapper h1 {
+    margin: 0;
+}
+
+.historyFields {
+    display: flex;
+    gap: 25px;
+    overflow-x: scroll;
+    width: min-content;
+}
+
+.historyFieldsWrapper {
+    overflow-x: scroll;
+}
+
+.button {
+    width: 100px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: @mainBG;
+    color: @secondColor;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.statistics {
+    margin: 0 10px;
+}
+
+.statistics table {
+    width: 100%;
+}
+
+.statistics table tr {
+    width: 100%;
+}
+
+.statistics table tr td:nth-child(1) {
+    text-align: left;
+    width: 50%;
+    border-bottom: 1px solid @mainBG;
+}
+
+.statistics table tr td:nth-child(2) {
+    text-align: right;
+    width: 50%;
+    border-bottom: 1px solid @mainBG;
+}
+
+
+.alert {
+    position: fixed;
+    background-color: @mainBG;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: @secondColor;
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    opacity: 1;
+}
+
+@media (max-width: 500px) {
+    .buttons {
+        gap: 15px;
+        margin: 20px 0;
+        flex-direction: column;
+    }
+
+    .button {
+        width: calc(100% - 20px) !important;
+        margin: 0 10px;
+    }
+}
