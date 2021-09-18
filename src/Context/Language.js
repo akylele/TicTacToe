@@ -3,10 +3,9 @@ import React, {useEffect, useState} from "react";
 import helpers from "../helpers/localStorage";
 import localStorage from "../helpers/localStorage";
 
-export const HistoryContext = React.createContext();
+export const LanguageContext = React.createContext();
 
-export const HistoryContextProvider = ({ children }) => {
-    const [history, setHistory] = useState(helpers.getInitLS())
+export const LanguageContextProvider = ({ children }) => {
     const [language, setLanguage] = useState(helpers.getLanguage())
 
     useEffect(() => {
@@ -14,16 +13,6 @@ export const HistoryContextProvider = ({ children }) => {
             changeLanguage()
         }
     },[])
-
-    const handleSetHistory = (newHistory) => {
-        setHistory(newHistory)
-        helpers.setLS(newHistory)
-    }
-
-    const handleClearHistory = () => {
-        helpers.clearLS()
-        setHistory([])
-    }
 
     const changeLanguage = () => {
         if(language === 'en') {
@@ -36,14 +25,11 @@ export const HistoryContextProvider = ({ children }) => {
     }
 
     return (
-        <HistoryContext.Provider value={{
-            history,
-            setHistory: handleSetHistory,
-            handleClearHistory,
+        <LanguageContext.Provider value={{
             changeLanguage,
             language
         }}>
             {children}
-        </HistoryContext.Provider>
+        </LanguageContext.Provider>
     )
 }

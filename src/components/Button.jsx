@@ -1,8 +1,10 @@
-const Cross = ({isWin}) => (
-    <div className={`cross ${isWin ? 'red' : ''}`}>
-            <span className="material-icons">
-                clear
-            </span>
+const Button = ({width, children, ...props}) => (
+    <div
+        className='button'
+        style={{width}}
+        {...props}
+    >
+        {children}
     </div>
 )
-export default Cross
+export default Button

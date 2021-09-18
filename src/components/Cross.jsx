@@ -1,14 +1,8 @@
-import React from 'react'
-
-const Cross = ({handleClick}) => {
-
-    return (
-        <div className="cross" onClick={(e) => handleClick(e)}>
+const Cross = ({isWin}) => (
+    <div className={`cross ${isWin ? 'red' : ''}`}>
             <span className="material-icons">
                 clear
             </span>
-        </div>
-    )
-}
-
+    </div>
+)
 export default Cross

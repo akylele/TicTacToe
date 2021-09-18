@@ -1,14 +1,11 @@
 import React from 'react'
 
-const Zero = ({handleClick}) => {
-
-    return (
-       <div className="zero" onClick={handleClick}>
+const Zero = ({isWin}) => (
+    <div className={`zero ${isWin ? 'red' : ''}`}>
             <span className="material-icons">
                 radio_button_unchecked
             </span>
-       </div>
-    )
-}
+    </div>
+)
 
 export default Zero

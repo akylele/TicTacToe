@@ -1,35 +1,34 @@
 import React, {useEffect, useState} from "react";
 
-import helpers from "../helpers/localStorage";
-import localStorage from "../helpers/localStorage";
+export const BasicContext = React.createContext();
 
-export const LanguageContext = React.createContext();
-
-export const LanguageContextProvider = ({ children }) => {
-    const [language, setLanguage] = useState(helpers.getLanguage())
+export const BasicContextProvider = ({ children }) => {
+    const [alert, setAlert] = useState(null)
+    const initialStateForField = [
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+    ]
 
     useEffect(() => {
-        if(!helpers.getLanguage()) {
-            changeLanguage()
-        }
-    },[])
-
-    const changeLanguage = () => {
-        if(language === 'en') {
-            setLanguage('ru')
-            helpers.setLanguage('ru')
-        } else {
-            setLanguage('en')
-            helpers.setLanguage('en')
-        }
-    }
+        setTimeout(() => {
+            setAlert(null)
+        },3000)
+    },[alert])
 
     return (
-        <LanguageContext.Provider value={{
-            changeLanguage,
-            language
+        <BasicContext.Provider value={{
+            alertMessage: alert,
+            setAlert,
+            initialStateForField
         }}>
             {children}
-        </LanguageContext.Provider>
+        </BasicContext.Provider>
     )
 }

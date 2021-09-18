@@ -1,18 +1,23 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+
 import Zero from "./Zero";
 import Cross from "./Cross";
-import '../styles/index.css'
 import Empty from "./Empty";
-import History from "./History";
+
 
 const HistoryField = ({historyItem}) => {
+    const {
+        field,
+        keys
+    } = historyItem
+
     const renderBlocks = () => {
-        console.log('==========>historyItem', historyItem)
-        if(historyItem.length) {
-            return historyItem.map((item) => {
-                if(item === 'empty') return <Empty/>
-                if(item === 'zero') return <Zero/>
-                if(item === 'cross') return <Cross/>
+        if(field.length) {
+            return field.map((item, index) => {
+                const isWin = keys.includes(index)
+                if(item === 'empty') return <Empty />
+                if(item === 'zero') return <Zero isWin={isWin}/>
+                if(item === 'cross') return <Cross isWin={isWin}/>
             })
         }
 
@@ -20,12 +25,9 @@ const HistoryField = ({historyItem}) => {
     }
 
     return (
-        <>
-            <div className="history-field">
-                {renderBlocks()}
-            </div>
-        </>
-
+        <div className="history-field">
+            {renderBlocks()}
+        </div>
     );
 }
 

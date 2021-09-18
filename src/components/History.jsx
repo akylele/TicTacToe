@@ -1,24 +1,29 @@
 import React from 'react'
+
 import HistoryField from "./HistoryField";
+
+import {getText} from "../locales";
 
 const History = ({history}) => {
 
     const renderItems = () => {
-        if(history.length) {
-            return history.map(elem => (
-                <HistoryField historyItem={elem}/>
+        if (history.length) {
+            return history.map(historyItem => (
+                <HistoryField historyItem={historyItem}/>
             ))
         }
 
-        return <p>empty</p>
+        return <span>{getText('emptyHistory')}</span>
     }
 
     return (
-        <div>
-            <h1>History</h1>
+        <div className="historyWrapper">
+            <h1>{getText('history')}</h1>
             <br/>
-            <div className="history">
-                {renderItems()}
+            <div className="historyFieldsWrapper">
+                <div className="historyFields">
+                    {renderItems()}
+                </div>
             </div>
         </div>
     )
