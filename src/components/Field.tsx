@@ -6,15 +6,21 @@ import Empty from "./Empty";
 
 import {BasicContext} from "../Context/Basic";
 import {getText} from "../locales";
+import {IHistoryElem} from "../types/types";
 
-const Field = ({history, setHistory}) => {
+interface IFieldProps {
+    history: IHistoryElem[] | [],
+    setHistory: (historyElems: IHistoryElem[] | []) => void
+}
+
+const Field = ({history, setHistory}: IFieldProps) => {
     const {setAlert, initialStateForField} = useContext(BasicContext)
 
-    const [lastStep, setLastStep] = useState(null)
+    const [lastStep, setLastStep] = useState<string | null>(null)
     const [blocks, setBlocks] = useState(initialStateForField)
 
-    const handleClick = (e, index) => {
-        const newBlocks = blocks.map((block, idx) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+        const newBlocks = blocks.map((block: string, idx: number) => {
             if (index === idx) {
                 if (!lastStep) {
                     setLastStep('zero')
@@ -39,7 +45,7 @@ const Field = ({history, setHistory}) => {
         setBlocks(newBlocks)
     }
 
-    const isSeries = (ft, sd, td, keys) => (ft !== 'empty' && sd !== 'empty' && td !== 'empty' && (ft === sd && ft === td && sd === td) && [ft, keys])
+    const isSeries = (ft: string, sd: string, td: string, keys: number[]) => (ft !== 'empty' && sd !== 'empty' && td !== 'empty' && (ft === sd && ft === td && sd === td) && [ft, keys])
 
     const isTheEnd = () => {
         const checkIsSeries = (
@@ -53,11 +59,11 @@ const Field = ({history, setHistory}) => {
             isSeries(blocks[2], blocks[4], blocks[6], [2, 4, 6])
         )
         if (checkIsSeries) return checkIsSeries
-        else if (blocks.every(block => block !== 'empty')) return true
+        else if (blocks.every((block: string) => block !== 'empty')) return true
         return false
     }
 
-    const theEnd = (isTheEnd) => {
+    const theEnd = (isTheEnd: any) => {
         if (Array.isArray(isTheEnd)) {
             const [player, keys] = isTheEnd
             const message = player === 'zero' ? getText('zerosWin') : getText('crossesWin')
@@ -93,10 +99,11 @@ const Field = ({history, setHistory}) => {
     }, [history])
 
     const renderBlocks = () => {
-        return blocks.map((block, index) => {
-            if (block === 'empty') return <Empty handleClick={(e) => handleClick(e, index)}/>
-            if (block === 'zero') return <Zero/>
-            if (block === 'cross') return <Cross/>
+        return blocks.map((block: string, index: number) => {
+            if (block === 'empty') return <Empty key={index} onClick={(e) => handleClick(e, index)}/>
+            if (block === 'zero') return <Zero key={index} />
+            if (block === 'cross') return <Cross key={index} />
+            return null
         })
     }
 

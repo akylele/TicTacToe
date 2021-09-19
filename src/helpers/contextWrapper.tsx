@@ -1,8 +1,13 @@
 import {BasicContextProvider} from "../Context/Basic";
 import {LanguageContextProvider} from "../Context/Language";
 import {HistoryContextProvider} from "../Context/History";
+import React from "react";
 
-const ContextWrapper = ({children}) => {
+interface IContextWrapperProps {
+    children?: React.ReactNode,
+}
+
+const ContextWrapper = ({children}: IContextWrapperProps) => {
 
     return (
         <BasicContextProvider>

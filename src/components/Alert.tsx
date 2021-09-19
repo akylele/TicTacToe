@@ -1,4 +1,8 @@
-const Alert = ({text}) => {
+interface IAlertProps {
+    text: string
+}
+
+const Alert = ({text}: IAlertProps) => {
 
     return (
         <div

@@ -2,11 +2,25 @@ import React, {useEffect, useState} from "react";
 
 import helpers from "../helpers/localStorage";
 import localStorage from "../helpers/localStorage";
+import {IHistoryElem} from "../types/types";
 
-export const LanguageContext = React.createContext();
 
-export const LanguageContextProvider = ({ children }) => {
-    const [language, setLanguage] = useState(helpers.getLanguage())
+interface ILanguageContextProviderProps {
+    children?: React.ReactNode,
+}
+
+interface ILanguageContext {
+    changeLanguage: () => void,
+    language: string
+}
+
+export const LanguageContext = React.createContext<ILanguageContext>({
+    changeLanguage: () => {},
+    language: 'ru'
+});
+
+export const LanguageContextProvider = ({ children }: ILanguageContextProviderProps) => {
+    const [language, setLanguage] = useState<string>(helpers.getLanguage())
 
     useEffect(() => {
         if(!helpers.getLanguage()) {

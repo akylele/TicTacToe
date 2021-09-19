@@ -3,13 +3,18 @@ import React from 'react'
 import HistoryField from "./HistoryField";
 
 import {getText} from "../locales";
+import {IHistoryElem} from "../types/types";
 
-const History = ({history}) => {
+interface IHistoryProps {
+    history: IHistoryElem[] | [],
+}
+
+const History = ({history}: IHistoryProps) => {
 
     const renderItems = () => {
         if (history.length) {
-            return history.map(historyItem => (
-                <HistoryField historyItem={historyItem}/>
+            return history.map((historyItem, index) => (
+                <HistoryField key={index} historyItem={historyItem}/>
             ))
         }
 
