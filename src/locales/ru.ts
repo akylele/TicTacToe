@@ -6,5 +6,9 @@ export default {
   draw: 'Ничья',
   clearStatistic: 'Очистить статистику',
   changeLanguage: 'Сменить язык',
-  emptyHistory: 'Нет истории игр'
+  emptyHistory: 'Нет истории игр',
+  lastMove: 'Прошлый ход',
+  nextMove: 'Следующий ход',
+  goBack: 'Вернуться назад',
+  play: 'Воспроизвести',
 }

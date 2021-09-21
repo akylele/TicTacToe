@@ -18,6 +18,7 @@ const Field = ({history, setHistory}: IFieldProps) => {
 
     const [lastStep, setLastStep] = useState<string | null>(null)
     const [blocks, setBlocks] = useState(initialStateForField)
+    const [historyBlocks, setHistoryBlocks] = useState<any>([])
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
         const newBlocks = blocks.map((block: string, idx: number) => {
@@ -42,6 +43,7 @@ const Field = ({history, setHistory}: IFieldProps) => {
 
             return block
         })
+        setHistoryBlocks([...historyBlocks, newBlocks])
         setBlocks(newBlocks)
     }
 
@@ -72,8 +74,10 @@ const Field = ({history, setHistory}: IFieldProps) => {
             setHistory([...history, {
                 field: blocks,
                 keys,
-                player
+                player,
+                strokeHistory: historyBlocks
             }])
+            setHistoryBlocks([])
             setBlocks(initialStateForField)
             setAlert(message)
         } else if (isTheEnd) {
@@ -83,8 +87,10 @@ const Field = ({history, setHistory}: IFieldProps) => {
             setHistory([...history, {
                 field: blocks,
                 keys: [],
-                player: 'draw'
+                player: 'draw',
+                strokeHistory: historyBlocks
             }])
+            setHistoryBlocks([])
             setBlocks(initialStateForField)
             setAlert(message)
         }

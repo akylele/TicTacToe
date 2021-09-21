@@ -1,14 +1,23 @@
-$mainBG: #938d84;
-$mainColor: black;
-$secondColor: white;
+@import "variables";
+
+a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+
+  &:hover {
+    color: inherit;
+  }
+}
 
 .field {
+  box-sizing: content-box;
   width: 300px;
   height: 300px;
   border: 1px solid $mainColor;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 
   .cross, .zero, .empty {
     width: 100px;
@@ -28,6 +37,7 @@ $secondColor: white;
 }
 
 .history-field {
+  box-sizing: content-box;
   margin-top: 10px;
   width: 99px;
   height: 99px;
@@ -77,7 +87,8 @@ $secondColor: white;
 }
 
 .button {
-  width: 100px;
+  position: relative;
+  width: auto;
   height: 45px;
   border-radius: 5px;
   background-color: $mainBG;
@@ -85,12 +96,20 @@ $secondColor: white;
   line-height: 45px;
   text-overflow: ellipsis;
   text-align: center;
+  user-select: none;
+
+  .loader {
+    position: absolute;
+    right: 5%;
+    top: calc(50% - 15px);
+    margin: auto;
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.buttons {
-  display: flex;
-  gap: 25px;
-  margin: 20px 0;
+.button.disabled {
+  filter: grayscale(1)
 }
 
 .statistics {
@@ -135,19 +154,13 @@ $secondColor: white;
 
 .bottomScreen {
   display: block;
-  height: calc(100vh - 318px);
+  height: calc(100vh - 318px - 15px);
   overflow-y: scroll;
 }
 
-@media (max-width: 500px) {
-  .buttons {
-    gap: 15px;
-    margin: 20px 0;
-    flex-direction: column;
-  }
-
-  .button {
-    width: calc(100% - 20px) !important;
-    margin: 0 10px;
-  }
+.game-play_wrapper {
+  width: 100%;
+  height: 100vh;
 }
+
+

@@ -4,17 +4,17 @@ import {HistoryContext} from "../Context/History";
 import {LanguageContext} from "../Context/Language";
 import {BasicContext} from "../Context/Basic";
 
-import Field from "./Field";
-import Statistics from "./Statistics";
-import Button from "./Button";
-import History from "./History";
-import Alert from "./Alert";
+import Field from "../components/Field";
+import Statistics from "../components/Statistics";
+import Button from "../components/Button";
+import History from "../components/History";
+import Alert from "../components/Alert";
 
 import {getText} from "../locales";
 
 import '../styles/index.scss'
 
-const Main = () => {
+const MainPage = () => {
     const {history, setHistory, handleClearHistory} = useContext(HistoryContext)
     const {changeLanguage} = useContext(LanguageContext)
     const {alertMessage} = useContext(BasicContext)
@@ -26,7 +26,7 @@ const Main = () => {
             <div className="bottomScreen">
                 <History history={history}/>
                 <Statistics history={history}/>
-                <div className="buttons">
+                <div className="buttons nowrap">
                     <Button
                         onClick={handleClearHistory}
                         width={'200px'}
@@ -45,4 +45,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default MainPage

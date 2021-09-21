@@ -4,6 +4,8 @@ import HistoryField from "./HistoryField";
 
 import {getText} from "../locales";
 import {IHistoryElem} from "../types/types";
+import {Link} from "react-router-dom";
+import {Container} from "react-bootstrap";
 
 interface IHistoryProps {
     history: IHistoryElem[] | [],
@@ -14,7 +16,10 @@ const History = ({history}: IHistoryProps) => {
     const renderItems = () => {
         if (history.length) {
             return history.map((historyItem, index) => (
-                <HistoryField key={index} historyItem={historyItem}/>
+                <Link to={`gameplay/${index}`}>
+                    <HistoryField key={index} historyItem={historyItem}/>
+
+                </Link>
             ))
         }
 
@@ -22,15 +27,17 @@ const History = ({history}: IHistoryProps) => {
     }
 
     return (
-        <div className="historyWrapper">
-            <h1>{getText('history')}</h1>
-            <br/>
-            <div className="historyFieldsWrapper">
-                <div className="historyFields">
-                    {renderItems()}
+        <Container>
+            <div className="historyWrapper">
+                <h1>{getText('history')}</h1>
+                <br/>
+                <div className="historyFieldsWrapper">
+                    <div className="historyFields">
+                        {renderItems()}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Container>
     )
 }
 
