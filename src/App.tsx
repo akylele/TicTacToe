@@ -1,7 +1,10 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import ContextWrapper from "./helpers/contextWrapper";
 import Routes from "./routes";
-import { BrowserRouter as Router } from 'react-router-dom';
+
+import './styles/index.scss'
 
 
 const App = () => {

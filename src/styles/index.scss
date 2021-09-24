@@ -1,9 +1,11 @@
 @import "variables";
+@import "mixins";
+@import "preset";
+@import "reset";
 
 a {
   text-decoration: none;
   color: inherit;
-  width: 100%;
 
   &:hover {
     color: inherit;
@@ -17,7 +19,7 @@ a {
   border: 1px solid $mainColor;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto 15px;
+  margin: 15px auto;
 
   .cross, .zero, .empty {
     width: 100px;
@@ -80,6 +82,7 @@ a {
   gap: 25px;
   overflow-x: scroll;
   width: min-content;
+  min-width: 100%;
 }
 
 .historyFieldsWrapper {
@@ -88,7 +91,6 @@ a {
 
 .button {
   position: relative;
-  width: auto;
   height: 45px;
   border-radius: 5px;
   background-color: $mainBG;
@@ -97,6 +99,11 @@ a {
   text-overflow: ellipsis;
   text-align: center;
   user-select: none;
+  margin: 10px $marginButton;
+
+  @include min-width(xs) {
+    margin: 10px $marginButton 0;
+  }
 
   .loader {
     position: absolute;
@@ -137,7 +144,7 @@ a {
   }
 }
 
-.alert {
+.alertMessage {
   position: fixed;
   background-color: $mainBG;
   height: 45px;

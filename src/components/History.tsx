@@ -6,6 +6,7 @@ import {getText} from "../locales";
 import {IHistoryElem} from "../types/types";
 import {Link} from "react-router-dom";
 import {Container} from "react-bootstrap";
+import Icon from "./Icon";
 
 interface IHistoryProps {
     history: IHistoryElem[] | [],
@@ -18,12 +19,16 @@ const History = ({history}: IHistoryProps) => {
             return history.map((historyItem, index) => (
                 <Link to={`gameplay/${index}`}>
                     <HistoryField key={index} historyItem={historyItem}/>
-
                 </Link>
             ))
         }
 
-        return <span>{getText('emptyHistory')}</span>
+        return (
+            <>
+                <Icon iconName={'hourglass_empty'}/>
+                <span>{getText('emptyHistory')}</span>
+            </>
+        )
     }
 
     return (

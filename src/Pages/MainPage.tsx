@@ -12,7 +12,7 @@ import Alert from "../components/Alert";
 
 import {getText} from "../locales";
 
-import '../styles/index.scss'
+import {Col, Row} from "react-bootstrap";
 
 const MainPage = () => {
     const {history, setHistory, handleClearHistory} = useContext(HistoryContext)
@@ -26,20 +26,30 @@ const MainPage = () => {
             <div className="bottomScreen">
                 <History history={history}/>
                 <Statistics history={history}/>
-                <div className="buttons nowrap">
-                    <Button
-                        onClick={handleClearHistory}
-                        width={'200px'}
+                <Row className="no-margin">
+                    <Col
+                        xs={12}
+                        sm={6}
+                        className='no-padding'
                     >
-                        {getText('clearStatistic')}
-                    </Button>
-                    <Button
-                        onClick={changeLanguage}
-                        width={'200px'}
+                        <Button
+                            onClick={handleClearHistory}
+                        >
+                            {getText('clearStatistic')}
+                        </Button>
+                    </Col>
+                    <Col
+                        xs={12}
+                        sm={6}
+                        className='no-padding'
                     >
-                        {getText('changeLanguage')}
-                    </Button>
-                </div>
+                        <Button
+                            onClick={changeLanguage}
+                        >
+                            {getText('changeLanguage')}
+                        </Button>
+                    </Col>
+                </Row>
             </div>
         </>
     )

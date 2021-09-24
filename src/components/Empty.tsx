@@ -5,9 +5,7 @@ interface IEmptyProps {
 }
 
 const Empty = (props: IEmptyProps) => (
-    <div className="empty" {...props}>
-        <span className="material-icons"/>
-    </div>
+    <div className="empty" {...props}/>
 )
 
 export default Empty

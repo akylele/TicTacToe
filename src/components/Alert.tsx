@@ -6,9 +6,11 @@ const Alert = ({text}: IAlertProps) => {
 
     return (
         <div
-            className='alert'
+            className='alertMessage'
         >
-            {text}
+            <span>
+                {text}
+            </span>
         </div>
     )
 }

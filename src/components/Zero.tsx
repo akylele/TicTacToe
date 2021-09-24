@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 interface IZeroProps {
     isWin?: boolean
 }
@@ -5,9 +7,7 @@ interface IZeroProps {
 const Zero = ({isWin}: IZeroProps) => {
     return (
         <div className={`zero ${isWin ? 'red' : ''}`}>
-            <span className="material-icons">
-                radio_button_unchecked
-            </span>
+            <Icon iconName={'radio_button_unchecked'}/>
         </div>
     )
 }

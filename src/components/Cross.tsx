@@ -1,12 +1,12 @@
+import Icon from "./Icon";
+
 interface ICrossProps {
     isWin?: boolean,
 }
 
 const Cross = ({isWin}: ICrossProps) => (
     <div className={`cross ${isWin ? 'red' : ''}`}>
-            <span className="material-icons">
-                clear
-            </span>
+        <Icon iconName={'clear'}/>
     </div>
 )
 export default Cross
